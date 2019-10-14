@@ -46,7 +46,7 @@ RUN cd kong && git checkout next && make dev
 RUN luarocks install lua-resty-kafka 0.07
 RUN luarocks path --bin >> ~/.bashrc
 
-RUN sed -i "s#export LUA_PATH='/#export LUA_PATH='$KONG_ROOT;/#" ~/.bashrc
+RUN sed -i "s#export LUA_PATH='/#export LUA_PATH='$KONG_ROOT/?.lua;/#" ~/.bashrc
 
 RUN mkdir -p /workspace
 WORKDIR /workspace

@@ -1,14 +1,13 @@
 version: '3'
 services:
   kong-dev:
-    image: s4ni0r/kong-dev
+    build: ./docker-images/kong-dev
     container_name: kong-dev
     entrypoint: tail -f /dev/null
     working_dir: /workspace/kong-plugin-kafka-log
     depends_on:
       - postgres
     volumes:
-#      - ./kong:/kong
       - ./kong-plugin-kafka-log:/workspace/kong-plugin-kafka-log
     networks:
       kong-net:
